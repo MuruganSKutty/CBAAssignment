@@ -9,5 +9,17 @@
         android:id="@+id/newsListFragment"
         android:name="com.cbaassignment.feature.newsList.NewsListFragment"
         android:label="news_list_fragment"
-        tools:layout="@layout/news_list_fragment" />
+        tools:layout="@layout/news_list_fragment" >
+        <action
+            android:id="@+id/action_newsListFragment_to_newsDetailsFragment"
+            app:destination="@id/newsDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newsDetailsFragment"
+        android:name="com.cbaassignment.feature.newsDetails.NewsDetailsFragment"
+        android:label="NewsDetailsFragment" >
+        <argument
+            android:name="newsItem"
+            app:argType="com.cbaassignment.domain.NewsListItem" />
+    </fragment>
 </navigation>
