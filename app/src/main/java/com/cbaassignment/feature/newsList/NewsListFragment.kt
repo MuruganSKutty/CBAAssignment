@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.cbaassignment.MainActivity
 import com.cbaassignment.R
 import com.cbaassignment.databinding.NewsListFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -31,8 +32,9 @@ class NewsListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
-        viewModel.fetchNews()
+        setUpHeader()
         observeViewModel()
+        viewModel.fetchNews()
     }
 
     private fun observeViewModel() {
@@ -40,14 +42,23 @@ class NewsListFragment : Fragment() {
             viewModel.submitNewsData(news)
         })
         viewModel.getEvent.observe(viewLifecycleOwner, {
-            when(it) {
+            when (it) {
                 is NewsListViewModelEvent.ShowNewsDetails -> {
-                    findNavController().navigate(com.cbaassignment.feature.newsList.NewsListFragmentDirections.actionNewsListFragmentToNewsDetailsFragment(
-                        it.item
-                    ))
+                    findNavController().navigate(
+                        com.cbaassignment.feature.newsList.NewsListFragmentDirections.actionNewsListFragmentToNewsDetailsFragment(
+                            it.item
+                        )
+                    )
                 }
             }
         })
+    }
+
+    private fun setUpHeader() {
+        activity?.title = getString(R.string.news)
+        with(activity as MainActivity) {
+            setBackButtonVisibility(false)
+        }
     }
 
     override fun onDestroyView() {

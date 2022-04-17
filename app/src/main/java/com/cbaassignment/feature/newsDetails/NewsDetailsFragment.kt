@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import com.cbaassignment.MainActivity
 import com.cbaassignment.R
 import com.cbaassignment.databinding.NewsDetailsFragmentBinding
 import com.cbaassignment.databinding.NewsListFragmentBinding
@@ -39,7 +40,14 @@ class NewsDetailsFragment : Fragment() {
             .load(args.newsItem.imageUrl)
             .error(R.drawable.placeholder_drawable)
             .into(binding.ivImage)
+        setUpHeader()
+    }
 
+    private fun setUpHeader() {
+        activity?.title = getString(R.string.details)
+        with(activity as MainActivity) {
+            setBackButtonVisibility(true)
+        }
     }
 
     override fun onDestroyView() {

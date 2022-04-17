@@ -3,12 +3,15 @@ package com.cbaassignment.feature.newsList
 import android.util.Log
 import androidx.lifecycle.*
 import com.cbaassignment.domain.NewsListItem
+import com.cbaassignment.service.NewsRepository
 import com.cbaassignment.service.Repository
+import com.cbaassignment.utils.OpenForTesting
 import com.cbaassignment.utils.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@OpenForTesting
 @HiltViewModel
 class NewsListViewModel @Inject constructor(
     private val repository: Repository
