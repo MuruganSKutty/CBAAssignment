@@ -1,6 +1,5 @@
-package com.cbaassignment.feature.newsList
+package com.cbaassignment
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
@@ -8,20 +7,10 @@ import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
-import com.cbaassignment.MainActivity
-import com.cbaassignment.R
-import com.cbaassignment.service.ApiService
-import com.cbaassignment.service.FakeRepository
-import com.cbaassignment.service.Repository
-import kotlinx.coroutines.runBlocking
-import org.junit.Assert.*
-import org.junit.Before
+import com.cbaassignment.feature.newsList.NewsItemViewHolder
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.Mock
-import org.mockito.Mockito.mock
-import org.mockito.Mockito.verify
 
 @RunWith(AndroidJUnit4ClassRunner::class)
 class NewsListFragmentTest {
